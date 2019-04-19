@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/DucklingDesign
 /tmp
 /out-tsc
 # Only exists if Bazel was run
