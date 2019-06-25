@@ -2,9 +2,10 @@
   width: 800px;
   height: 800px;
   display: flex;
+  overflow: hidden;
+  border: 1px solid;
   box-sizing: border-box;
   flex-direction: column;
-  border: 1px solid black;
 
   .row {
     width: 100%;
@@ -14,12 +15,179 @@
   .col {
     width: 12.5%;
     height: 100%;
-    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .wrapper {
+      flex: auto;
+      height: 100%;
+      position: relative;
+      box-shadow: inset 0 0 1px 1px black;
+
+      .animated-item {
+        z-index: 10;
+        display: flex;
+        position: absolute;
+        animation-duration: 2s;
+        animation-fill-mode: both;
+        animation-iteration-count: 1;
+      }
+
+      &.forward .animated-item {
+        &.top {
+          animation-name: slide-top;
+        }
+        &.right {
+          animation-name: slide-right;
+        }
+        &.bottom {
+          animation-name: slide-bottom;
+        }
+        &.left {
+          animation-name: slide-left;
+        }
+      }
+
+      &.backward .animated-item {
+        &.top {
+          animation-name: slide-top-reversed;
+        }
+        &.right {
+          animation-name: slide-right-reversed;
+        }
+        &.bottom {
+          animation-name: slide-bottom-reversed;
+        }
+        &.left {
+          animation-name: slide-left-reversed;
+        }
+      }
+
+      &.square {
+        @for $w from 1 through 3 {
+          @for $h from 1 through 3 {
+            @for $d from 1 through 3 {
+              &.w#{$w}-h#{$h}-d#{$d} {
+                .square-container {
+                  top: 0;
+                  left: 0;
+                  overflow: hidden;
+                  position: absolute;
+                  width: calc(100% * #{$w});
+                  height: calc(100% * #{$h});
+
+                  .animated-item {
+                    width: 100%;
+                    height: 100%;
+                    animation-delay: calc(0.25s * #{$d});
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      @for $d from 1 through 3 {
+        &.circle-d#{$d} {
+          overflow: hidden;
+
+          .animated-item {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation-delay: calc(0.25s * #{$d});
+          }
+        }
+      }
+
+      &.red .animated-item {
+        background: #e52322;
+      }
+
+      &.blue .animated-item {
+        background: #244a9a;
+      }
+    }
   }
 
   .row,
   .col {
     display: flex;
+    background: white;
     box-sizing: border-box;
+  }
+}
+
+@keyframes slide-top {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes slide-bottom {
+  0% {
+    bottom: -100%;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes slide-top-reversed {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -100%;
+  }
+}
+
+@keyframes slide-right-reversed {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -100%;
+  }
+}
+
+@keyframes slide-bottom-reversed {
+  0% {
+    bottom: 0;
+  }
+  100% {
+    bottom: -100%;
+  }
+}
+
+@keyframes slide-left-reversed {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
   }
 }

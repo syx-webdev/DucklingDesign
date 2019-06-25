@@ -19,4 +19,11 @@
       font-weight: 700;
     }
   }
+
+  app-side-menu {
+    right: 0;
+    position: absolute;
+    transform: rotateZ(-90deg);
+    transform-origin: right bottom;
+  }
 }

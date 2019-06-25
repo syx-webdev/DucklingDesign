@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="menu">
+    <div class="menu-item">
+      <span class="title" (click)="selectPage('references')">References</span>
+      <span *ngIf="selectedPage === 'references'" class="list-item">Yey!</span>
+    </div>
+    <div class="menu-item">
+      <span class="title" (click)="selectPage('about')">About</span>
+      <span *ngIf="selectedPage === 'about'" class="list-item">Hi!</span>
+    </div>
+    <div class="menu-item">
+      <span class="dropdown">
+        <span class="title">
+          Portolio
+        </span>
+        <span *ngIf="isPortfolio()" class="list-item selected"><span class="dot"></span>{{ selectedPage }}</span>
+        <div class="list" [class.selection]="isPortfolio()">
+          <ng-container *ngFor="let page of pages">
+            <span *ngIf="selectedPage !== page" (click)="selectPage(page)" class="list-item"><span class="dot"></span>{{ page }}</span>
+          </ng-container>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>

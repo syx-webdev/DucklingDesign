@@ -1,5 +1,26 @@
 <div class="container">
-  <div class="row" *ngFor="let row of [0, 1, 2, 3, 4, 5, 6, 7]">
-    <div class="col" *ngFor="let col of [0, 1, 2, 3, 4, 5, 6, 7]"></div>
+  <div class="row" *ngFor="let row of grid">
+    <div class="col" *ngFor="let item of row">
+      <ng-container [ngTemplateOutlet]="animation" [ngTemplateOutletContext]="{ item: item }"></ng-container>
+    </div>
   </div>
 </div>
+
+<ng-template #animation let-item="item">
+  <span
+    class="wrapper"
+    [ngClass]="[getAnimationClasses(item), item.color ? (isReversed ? 'backward' : 'forward') : '']"
+    (click)="reverse()"
+  >
+    <span *ngIf="item.type === 'circle'" [ngClass]="['animated-item', item.direction ? item.direction : '']"></span>
+    <span *ngIf="item.type === 'square'" class="square-container">
+      <span [ngClass]="['animated-item', item.direction ? item.direction : '']"></span>
+    </span>
+  </span>
+</ng-template>
+
+<ng-template #portfolio let-item="item">
+  <span class="wrapper" [ngClass]="getItemClasses(item)">
+    <span class="portfolio-item"></span>
+  </span>
+</ng-template>
