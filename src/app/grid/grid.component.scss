@@ -1,40 +1,76 @@
+$num-rows: 8;
+$num-columns: 8;
+$grid-width: 800px;
+$grid-height: 800px;
+
 .container {
-  width: 800px;
-  height: 800px;
-  display: flex;
+  display: grid;
   overflow: hidden;
   border: 1px solid;
-  box-sizing: border-box;
-  flex-direction: column;
+  width: $grid-width;
+  align-items: center;
+  height: $grid-height;
+  justify-content: center;
+  grid-template-rows: repeat($num-rows, 1fr);
+  grid-template-columns: repeat($num-columns, 1fr);
 
-  .row {
-    width: 100%;
-    height: 12.5%;
-  }
-
-  .col {
-    width: 12.5%;
+  .wrapper {
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    box-shadow: inset 0 0 1px 1px black;
 
-    .wrapper {
-      flex: auto;
+    .animated-item {
+      z-index: 10;
+      display: flex;
+      position: absolute;
+      animation-fill-mode: both;
+      animation-iteration-count: 1;
+      animation-timing-function: ease;
+    }
+
+    .portfolio-item {
+      width: 100%;
       height: 100%;
-      position: relative;
-      box-shadow: inset 0 0 1px 1px black;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      animation-fill-mode: both;
+      animation-iteration-count: 1;
+      animation-timing-function: ease;
 
-      .animated-item {
-        z-index: 10;
-        display: flex;
-        position: absolute;
-        animation-duration: 2s;
-        animation-fill-mode: both;
-        animation-iteration-count: 1;
+      img {
+        transition: 0.25s;
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
       }
 
-      &.forward .animated-item {
+      .name {
+        left: 6px;
+        right: 6px;
+        opacity: 0;
+        text-align: left;
+        transition: 0.25s;
+        font-weight: bold;
+        position: absolute;
+        word-break: break-word;
+      }
+
+      &:hover {
+        img {
+          opacity: 0;
+        }
+
+        .name {
+          opacity: 1;
+        }
+      }
+    }
+
+    &.forward {
+      .animated-item {
+        animation-duration: 1s;
+
         &.top {
           animation-name: slide-top;
         }
@@ -49,7 +85,19 @@
         }
       }
 
-      &.backward .animated-item {
+      @for $d from 1 through 3 {
+        &.d#{$d} .portfolio-item {
+          animation-name: appear;
+          animation-duration: 0.5s;
+          animation-delay: calc(0.25s * #{$d});
+        }
+      }
+    }
+
+    &.backward {
+      .animated-item {
+        animation-duration: 0.25s;
+
         &.top {
           animation-name: slide-top-reversed;
         }
@@ -64,59 +112,61 @@
         }
       }
 
-      &.square {
-        @for $w from 1 through 3 {
-          @for $h from 1 through 3 {
-            @for $d from 1 through 3 {
-              &.w#{$w}-h#{$h}-d#{$d} {
-                .square-container {
-                  top: 0;
-                  left: 0;
-                  overflow: hidden;
-                  position: absolute;
-                  width: calc(100% * #{$w});
-                  height: calc(100% * #{$h});
+      @for $d from 1 through 3 {
+        &.d#{$d} .portfolio-item {
+          animation-name: disappear;
+          animation-duration: 0.2s;
+          animation-delay: calc(0.1s * #{$d});
+        }
+      }
+    }
 
-                  .animated-item {
-                    width: 100%;
-                    height: 100%;
-                    animation-delay: calc(0.25s * #{$d});
-                  }
+    &.square {
+      @for $w from 1 through 3 {
+        @for $h from 1 through 3 {
+          @for $d from 1 through 3 {
+            &.w#{$w}-h#{$h}-d#{$d} {
+              .square-container {
+                top: 0;
+                left: 0;
+                overflow: hidden;
+                position: absolute;
+                width: calc(100% * #{$w});
+                height: calc(100% * #{$h});
+
+                .animated-item {
+                  width: 100%;
+                  height: 100%;
+                  animation-delay: calc(0.25s * #{$d});
                 }
               }
             }
           }
         }
       }
+    }
 
-      @for $d from 1 through 3 {
-        &.circle-d#{$d} {
-          overflow: hidden;
+    @for $d from 1 through 3 {
+      &.circle-d#{$d} {
+        overflow: hidden;
 
-          .animated-item {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            animation-delay: calc(0.25s * #{$d});
-          }
+        .animated-item {
+          z-index: 11;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          animation-delay: calc(0.25s * #{$d});
         }
       }
-
-      &.red .animated-item {
-        background: #e52322;
-      }
-
-      &.blue .animated-item {
-        background: #244a9a;
-      }
     }
-  }
 
-  .row,
-  .col {
-    display: flex;
-    background: white;
-    box-sizing: border-box;
+    &.red .animated-item {
+      background: #e52322;
+    }
+
+    &.blue .animated-item {
+      background: #244a9a;
+    }
   }
 }
 
@@ -189,5 +239,23 @@
   }
   100% {
     left: -100%;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
