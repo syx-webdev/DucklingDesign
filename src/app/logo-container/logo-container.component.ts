@@ -1,14 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { StateService } from '../services/state.service';
 
 @Component({
   selector: 'app-logo-container',
   templateUrl: './logo-container.component.html',
-  styleUrls: ['./logo-container.component.scss']
+  styleUrls: ['./logo-container.component.scss'],
 })
-export class LogoContainerComponent implements OnInit {
-  @Input() bw = false;
+export class LogoContainerComponent {
+  bw = false;
 
-  constructor() {}
+  constructor(private state: StateService) {
+    this.state.currentPage.subscribe(page => (this.bw = !this.isPortfolio(page.name)));
+  }
 
-  ngOnInit() {}
+  isPortfolio(page: string) {
+    return page === 'Landing';
+  }
+
+  toLanding() {
+    this.state.toLanding();
+  }
 }
