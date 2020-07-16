@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { works } from '../../assets/works/structure.json';
 import { PortfolioItem } from '../models/portfolio.js';
 import { StateService } from '../services/state.service';
+import { Page } from '../models/page';
 
 @Component({
   selector: 'app-grid',
@@ -9,7 +10,7 @@ import { StateService } from '../services/state.service';
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent {
-  currentPage;
+  currentPage: Page;
   portfolioItems = [];
   gridItems = [];
   isReversed = false;
@@ -20,7 +21,7 @@ export class GridComponent {
   gridSize = { rows: 8, columns: 8 };
 
   constructor(private state: StateService, private changeDetector: ChangeDetectorRef) {
-    this.state.currentPage.subscribe((page: any) => {
+    this.state.currentPage.subscribe((page: Page) => {
       const fromPage = this.currentPage;
       // if (fromPage && (fromPage.parent === 'portfolio' && page.parent === 'portfolio')) {
         if (fromPage) {
@@ -83,7 +84,7 @@ export class GridComponent {
     return `d${this.getRandomItem(this.sizes)}`;
   }
 
-  reverse(fromPage: any) {
+  reverse(fromPage: Page) {
     this.isReversed = true;
     setTimeout(
       () => {
@@ -91,11 +92,6 @@ export class GridComponent {
       },
       fromPage.parent === 'landing' ? 1000 : 500,
     );
-  }
-
-  // TODO: Remove when real content added
-  randomImage() {
-    return 'https://picsum.photos/200/200';
   }
 
   getDimension(dimension: string) {
