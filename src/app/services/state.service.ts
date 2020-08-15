@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import * as routes from "../../assets/routes.json";
+import { routes } from "../models/routes";
 
 @Injectable({
   providedIn: "root",

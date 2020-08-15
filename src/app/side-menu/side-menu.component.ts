@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { StateService } from "../services/state.service";
-import * as routes from "../../assets/routes.json";
+import { routes } from "../models/routes";
 
 @Component({
   selector: "app-side-menu",
@@ -23,8 +23,6 @@ export class SideMenuComponent {
   }
 
   get portfolioRoutes() {
-    if (!routes)
-      return [];
     return routes.filter((route) => route.parent === "portfolio");
   }
 }
