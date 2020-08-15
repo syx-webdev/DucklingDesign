@@ -170,6 +170,10 @@ $grid-height: 800px;
   }
 }
 
+.hidden {
+  display: none;
+}
+
 @keyframes slide-top {
   0% {
     top: -100%;

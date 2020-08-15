@@ -21,9 +21,13 @@
   <span class="wrapper" [ngClass]="[item ? item.delay : '', isReversed ? 'backward' : 'forward']">
     <ng-container *ngIf="item && currentPage.name === 'All' || item?.category === currentPage?.name">
       <span class="portfolio-item">
-        <img [src]="getThumbnail(item.thumbnail)" [alt]="item.name" />
+        <img [src]="item.thumbnail" [alt]="item.name" loading="lazy" />
         <span class="name">{{ item.name }}</span>
       </span>
     </ng-container>
   </span>
 </ng-template>
+
+<ng-container *ngFor="let item of portfolioItems">
+  <img [src]="item.thumbnail" class="hidden">
+</ng-container>

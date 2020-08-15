@@ -1,44 +1,48 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { works } from '../../assets/works/structure.json';
-import { PortfolioItem } from '../models/portfolio.js';
-import { StateService } from '../services/state.service';
+import { Component } from "@angular/core";
+import { PortfolioItem } from "../models/portfolio.js";
+import { StateService } from "../services/state.service";
 
 @Component({
-  selector: 'app-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss'],
+  selector: "app-grid",
+  templateUrl: "./grid.component.html",
+  styleUrls: ["./grid.component.scss"],
 })
 export class GridComponent {
   currentPage;
   portfolioItems = [];
   gridItems = [];
   isReversed = false;
-  sizes = ['1', '2', '3'];
-  colors = ['blue', 'red'];
-  types = ['slide', 'circle'];
-  directions = ['top', 'right', 'bottom', 'left'];
+  sizes = ["1", "2", "3"];
+  colors = ["blue", "red"];
+  types = ["slide", "circle"];
+  directions = ["top", "right", "bottom", "left"];
   gridSize = { rows: 8, columns: 8 };
 
-  constructor(private state: StateService, private changeDetector: ChangeDetectorRef) {
+  constructor(private state: StateService) {
+    this.state.pageData.subscribe((data: any) => {
+      if (!!data)
+        this.portfolioItems = data['works'];
+    });
     this.state.currentPage.subscribe((page: any) => {
       const fromPage = this.currentPage;
       // if (fromPage && (fromPage.parent === 'portfolio' && page.parent === 'portfolio')) {
-        if (fromPage) {
-          this.reverse(fromPage);
-        }
-        setTimeout(
-          () => {
-            this.currentPage = page;
-            if (this.currentPage.parent === 'landing') {
-              this.generate();
-            } else {
-              this.portfolioItems.forEach(item => (item.delay = this.getRandomDelay()));
-            }
-          },
-          fromPage && fromPage.parent === 'landing' ? 1000 : 500,
-        );
+      if (fromPage) {
+        this.reverse(fromPage);
+      }
+      setTimeout(
+        () => {
+          this.currentPage = page;
+          if (this.currentPage.parent === "landing") {
+            this.generate();
+          } else {
+            this.portfolioItems.forEach(
+              (item) => (item.delay = this.getRandomDelay())
+            );
+          }
+        },
+        fromPage && fromPage.parent === "landing" ? 1000 : 500
+      );
     });
-    this.portfolioItems = works;
   }
 
   getRandomItem(array: any) {
@@ -60,10 +64,10 @@ export class GridComponent {
       item.direction = this.getRandomItem(this.directions);
       item.delay = this.getRandomItem(this.sizes);
       if (circlesLeft > 0) {
-        item.type = 'circle';
+        item.type = "circle";
         circlesLeft--;
       } else {
-        item.type = 'square';
+        item.type = "square";
         item.width = this.getRandomItem(this.sizes);
         item.height = this.getRandomItem(this.sizes);
       }
@@ -73,10 +77,10 @@ export class GridComponent {
 
   getAnimationClasses(item: any) {
     return item
-      ? item.type === 'square'
+      ? item.type === "square"
         ? `${item.color} ${item.type} w${item.width}-h${item.height}-d${item.delay}`
         : `${item.color} ${item.type}-d${item.delay}`
-      : '';
+      : "";
   }
 
   getRandomDelay() {
@@ -89,13 +93,13 @@ export class GridComponent {
       () => {
         this.isReversed = false;
       },
-      fromPage.parent === 'landing' ? 1000 : 500,
+      fromPage.parent === "landing" ? 1000 : 500
     );
   }
 
   // TODO: Remove when real content added
   randomImage() {
-    return 'https://picsum.photos/200/200';
+    return "https://picsum.photos/200/200";
   }
 
   getDimension(dimension: string) {
@@ -107,15 +111,20 @@ export class GridComponent {
   }
 
   getAnimatedItem(row: number, col: number) {
-    return this.gridItems.find(item => item.row === row && item.col === col);
+    return this.gridItems.find((item) => item.row === row && item.col === col);
   }
 
   getPortfolioItem(row: number, col: number) {
-    return this.portfolioItems.find(item => item.gridPosition.row === row && item.gridPosition.col === col);
+    return this.portfolioItems.find(
+      (item) => item.gridPosition.row === row && item.gridPosition.col === col
+    );
   }
 
   isVisiblePortfolioItem(item: PortfolioItem) {
-    return this.currentPage ? this.currentPage.name === 'All' || this.currentPage.name === item.category : false;
+    return this.currentPage
+      ? this.currentPage.name === "All" ||
+          this.currentPage.name === item.category
+      : false;
   }
 
   openPortfolioItem(event, item: any) {

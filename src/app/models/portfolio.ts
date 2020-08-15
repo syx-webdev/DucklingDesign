@@ -1,14 +1,12 @@
 export interface Portfolio {
   animations: Animation[];
-  books: Book[];
   branding: Branding[];
   posters: Poster[];
   uiux: Uiux[];
+  others: PortfolioItem[];
 }
 
 interface Animation extends PortfolioItem {}
-
-interface Book extends PortfolioItem {}
 
 interface Branding extends PortfolioItem {}
 
@@ -24,4 +22,12 @@ export interface PortfolioItem {
     row: number;
     col: number;
   };
+  details: PortfolioItemDetail[];
+}
+
+export interface PortfolioItemDetail {
+  title: string;
+  description: string;
+  headerImage: string;
+  images: string[];
 }

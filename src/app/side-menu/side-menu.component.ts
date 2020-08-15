@@ -1,21 +1,21 @@
-import { Component } from '@angular/core';
-import { StateService } from '../services/state.service';
-import { appRoutes } from '../../assets/works/structure.json';
+import { Component } from "@angular/core";
+import { StateService } from "../services/state.service";
+import * as routes from "../../assets/routes.json";
 
 @Component({
-  selector: 'app-side-menu',
-  templateUrl: './side-menu.component.html',
-  styleUrls: ['./side-menu.component.scss'],
+  selector: "app-side-menu",
+  templateUrl: "./side-menu.component.html",
+  styleUrls: ["./side-menu.component.scss"],
 })
 export class SideMenuComponent {
   selectedPage;
 
   constructor(private state: StateService) {
-    this.state.currentPage.subscribe(page => (this.selectedPage = page));
+    this.state.currentPage.subscribe((page) => (this.selectedPage = page));
   }
 
   isPortfolio() {
-    return this.selectedPage && this.selectedPage.parent === 'portfolio';
+    return this.selectedPage && this.selectedPage.parent === "portfolio";
   }
 
   selectPage(page) {
@@ -23,6 +23,6 @@ export class SideMenuComponent {
   }
 
   get portfolioRoutes() {
-    return appRoutes.filter(route => route.parent === 'portfolio');
+    return routes.filter((route) => route.parent === "portfolio");
   }
 }
