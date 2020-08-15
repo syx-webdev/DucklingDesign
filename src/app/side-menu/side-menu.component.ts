@@ -23,6 +23,8 @@ export class SideMenuComponent {
   }
 
   get portfolioRoutes() {
+    if (!routes)
+      return [];
     return routes.filter((route) => route.parent === "portfolio");
   }
 }
