@@ -7,6 +7,7 @@ $grid-max-height: 80vw;
 
 :host {
   align-self: center;
+  padding-bottom: 30px;
   max-width: $grid-max-width;
   max-height: $grid-max-height;
 }
