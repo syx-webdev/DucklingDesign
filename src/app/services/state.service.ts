@@ -1,20 +1,30 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { appRoutes } from '../../assets/works/structure.json';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { routes } from "../models/routes";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class StateService {
-  currentPage = new BehaviorSubject(appRoutes[0]);
+  pageData = new BehaviorSubject(undefined);
+  currentPage = new BehaviorSubject(routes[0]);
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+    this.http
+      .get(
+        "https://dl.dropboxusercontent.com/s/r7a0c6vi8by94bq/structure.json?dl=1"
+      )
+      .subscribe((json) => {
+        this.pageData.next(json);
+      });
+  }
 
   navigate(page: any) {
     this.currentPage.next(page);
   }
 
   toLanding() {
-    this.navigate(appRoutes[0]);
+    this.navigate(routes[0]);
   }
 }

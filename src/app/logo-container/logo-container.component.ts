@@ -10,7 +10,7 @@ export class LogoContainerComponent {
   bw = false;
 
   constructor(private state: StateService) {
-    this.state.currentPage.subscribe(page => (this.bw = !this.isPortfolio(page.name)));
+    this.state.currentPage.subscribe((page) => (this.bw = !this.isPortfolio(page.name)));
   }
 
   isPortfolio(page: string) {

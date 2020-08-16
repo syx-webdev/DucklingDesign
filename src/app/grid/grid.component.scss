@@ -180,6 +180,10 @@ $grid-max-height: 80vw;
   }
 }
 
+.hidden {
+  display: none;
+}
+
 @keyframes slide-top {
   0% {
     top: -100%;
