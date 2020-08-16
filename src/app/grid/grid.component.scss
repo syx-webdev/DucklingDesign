@@ -1,13 +1,12 @@
 $num-rows: 8;
 $num-columns: 8;
-$grid-width: 800px;
-$grid-height: 800px;
+$grid-width: 750px;
+$grid-height: 750px;
 $grid-max-width: 80vw;
 $grid-max-height: 80vw;
 
 :host {
   align-self: center;
-  padding-bottom: 30px;
   max-width: $grid-max-width;
   max-height: $grid-max-height;
 }
