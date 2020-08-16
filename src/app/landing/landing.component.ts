@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Page } from "../models/page";
 import { StateService } from "../services/state.service";
 
 @Component({
@@ -7,7 +8,7 @@ import { StateService } from "../services/state.service";
   styleUrls: ["./landing.component.scss"],
 })
 export class LandingComponent {
-  currentPage;
+  currentPage: Page;
 
   constructor(private state: StateService) {
     this.state.currentPage.subscribe((page) => (this.currentPage = page));

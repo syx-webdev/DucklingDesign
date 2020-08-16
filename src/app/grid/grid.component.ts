@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { PortfolioItem } from "../models/portfolio.js";
+import { Page } from "../models/page";
+import { PortfolioItem } from "../models/portfolio";
 import { StateService } from "../services/state.service";
 
 @Component({
@@ -8,7 +9,7 @@ import { StateService } from "../services/state.service";
   styleUrls: ["./grid.component.scss"],
 })
 export class GridComponent {
-  currentPage;
+  currentPage: Page;
   portfolioItems = [];
   gridItems = [];
   isReversed = false;
@@ -87,7 +88,7 @@ export class GridComponent {
     return `d${this.getRandomItem(this.sizes)}`;
   }
 
-  reverse(fromPage: any) {
+  reverse(fromPage: Page) {
     this.isReversed = true;
     setTimeout(
       () => {
@@ -95,11 +96,6 @@ export class GridComponent {
       },
       fromPage.parent === "landing" ? 1000 : 500
     );
-  }
-
-  // TODO: Remove when real content added
-  randomImage() {
-    return "https://picsum.photos/200/200";
   }
 
   getDimension(dimension: string) {

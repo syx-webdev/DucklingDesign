@@ -1,7 +1,5 @@
 :host {
-  top: 0;
-  left: 0;
-  position: absolute;
+  align-self: flex-start;
 }
 
 img {
@@ -11,3 +9,10 @@ img {
   cursor: pointer;
   margin: 30px 50px;
 }
+
+@media (max-width: 1000px) {
+  img {
+    padding: 0;
+    margin: 30px 10vw;
+  }
+ }

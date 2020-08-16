@@ -2,6 +2,14 @@ $num-rows: 8;
 $num-columns: 8;
 $grid-width: 800px;
 $grid-height: 800px;
+$grid-max-width: 80vw;
+$grid-max-height: 80vw;
+
+:host {
+  align-self: center;
+  max-width: $grid-max-width;
+  max-height: $grid-max-height;
+}
 
 .container {
   display: grid;
@@ -11,6 +19,8 @@ $grid-height: 800px;
   align-items: center;
   height: $grid-height;
   justify-content: center;
+  max-width: $grid-max-width;
+  max-height: $grid-max-height;
   grid-template-rows: repeat($num-rows, 1fr);
   grid-template-columns: repeat($num-columns, 1fr);
 
