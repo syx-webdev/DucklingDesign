@@ -3,6 +3,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   .signum {
     padding: 10px;
@@ -28,6 +29,30 @@
     .signum {
       padding: 0;
       margin: 30px 10vw;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .signum {
+      #name {
+        font-size: 18px;
+      }
+
+      #profession {
+        font-size: 15px;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    .signum {
+      #name {
+        font-size: 16px;
+      }
+
+      #profession {
+        font-size: 14px;
+      }
     }
   }
 }
