@@ -3,16 +3,30 @@
 }
 
 img {
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   padding: 10px;
   cursor: pointer;
-  margin: 30px 50px;
+  margin: 24px 50px;
+}
+
+@media (min-width: 600px) {
+  img {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (min-width: 900px) {
+  img {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 @media (max-width: 1000px) {
   img {
     padding: 0;
-    margin: 30px 10vw;
+    margin: 24px 10vw;
   }
  }
