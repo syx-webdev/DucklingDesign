@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { DomSanitizer } from '@angular/platform-browser';
 import { Page } from "../models/page";
 import { routes } from "../models/routes";
 import { StateService } from "../services/state.service";
@@ -11,10 +12,17 @@ import { StateService } from "../services/state.service";
 export class MobileMenuComponent {
   public isOpen: boolean = false;
 
-  public constructor(private state: StateService) {}
+  public constructor(
+    private state: StateService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   public get routes(): any {
     return routes;
+  }
+
+  public getDelay(index: number): any {
+    return this.sanitizer.bypassSecurityTrustStyle(`--delay:${index}`);
   }
 
   public toggle(): void {
@@ -25,7 +33,7 @@ export class MobileMenuComponent {
     return route.name.toLowerCase() === route.parent.toLowerCase();
   }
 
-  selectPage(page) {
+  public selectPage(page): void {
     this.state.navigate(page);
     this.toggle();
   }

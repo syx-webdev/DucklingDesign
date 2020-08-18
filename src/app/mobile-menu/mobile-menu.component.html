@@ -8,7 +8,7 @@
   <div class="menu">
     <ng-container *ngFor="let route of routes; let i = index">
       <div class="menu-item" [class.main]="isMainRoute(route)" (click)="selectPage(route)">
-        <span class="title" [ngClass]="'delay-' + i">
+        <span class="title" [ngClass]="'delay-' + i" [style]="getDelay(i)">
           {{ route.name }} <span class="dot" *ngIf="selectedPage(route)"></span>
         </span>
       </div>

@@ -52,12 +52,7 @@
         left: -50%;
         opacity: 0;
         position: absolute;
-
-        @for $d from 0 through 8 {
-          &.delay-#{$d} {
-            animation: slide 0.3s calc(0.05s * #{$d}) ease-out forwards 1;
-          }
-        }
+        animation: slide 0.25s calc(0.05s * var(--delay)) ease-out forwards 1;
       }
     }
 
