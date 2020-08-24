@@ -3,7 +3,7 @@
     <ng-container
       *ngFor="let j of getDimension('columns'); let col = index"
       [ngTemplateOutlet]="currentPage?.name === 'Landing' ? animation : portfolio"
-      [ngTemplateOutletContext]="{ item: currentPage?.name === 'Landing' ? getAnimatedItem(row, col) : getPortfolioItem(row, col) }"
+      [ngTemplateOutletContext]="{ item: getItem(row, col) }"
     ></ng-container>
   </ng-container>
 </div>
