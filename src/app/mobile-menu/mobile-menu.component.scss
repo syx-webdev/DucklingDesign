@@ -40,12 +40,26 @@
 
     &-item {
       width: 40%;
-      margin: 15px 0;
+      height: 36px;
+      display: flex;
+      cursor: pointer;
       font-size: 18px;
       position: relative;
+      align-items: center;
 
       &.main {
         font-weight: bold;
+      }
+
+      .dot {
+        top: 8px;
+        width: 6px;
+        left: -12px;
+        height: 6px;
+        display: none;
+        background: black;
+        position: absolute;
+        border-radius: 50%;
       }
 
       .title {
@@ -53,17 +67,15 @@
         opacity: 0;
         position: absolute;
         animation: slide 0.25s calc(0.05s * var(--delay)) ease-out forwards 1;
-      }
-    }
 
-    .dot {
-      top: 8px;
-      width: 6px;
-      left: -12px;
-      height: 6px;
-      background: black;
-      position: absolute;
-      border-radius: 50%;
+        &.with-dot .dot {
+          display: block;
+        }
+      }
+
+      &:hover .dot {
+        display: block;
+      }
     }
   }
 }
@@ -80,7 +92,6 @@
     margin: 30px 10vw;
   }
 }
-
 
 @media (min-width: 600px) {
   .toggle {
