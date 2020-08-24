@@ -1,0 +1,135 @@
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.page-title {
+  display: flex;
+  font-size: 15px;
+  text-align: end;
+  flex-direction: column;
+
+  .parent {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+}
+
+.toggle {
+  width: 46px;
+  height: 24px;
+  padding: 10px;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  margin: 30px 50px 30px 14px;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+
+  span {
+    height: 2px;
+    width: 100%;
+    border-bottom: 2px solid black;
+  }
+
+  &.collapsed {
+    width: 16px;
+  }
+}
+
+.overlay {
+  left: 0;
+  bottom: 0;
+  z-index: 12;
+  width: 100vw;
+  padding: 25px 10vw 0;
+  position: absolute;
+  box-sizing: border-box;
+  background-color: white;
+  height: calc(100vh - 60px);
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      width: 40%;
+      height: 36px;
+      display: flex;
+      cursor: pointer;
+      font-size: 18px;
+      position: relative;
+      align-items: center;
+
+      &.main {
+        font-weight: bold;
+      }
+
+      .dot {
+        top: 8px;
+        width: 6px;
+        left: -12px;
+        height: 6px;
+        display: none;
+        background: black;
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .title {
+        left: -50%;
+        opacity: 0;
+        position: absolute;
+        animation: slide 0.25s calc(0.05s * var(--delay)) ease-out forwards 1;
+
+        &.with-dot .dot {
+          display: block;
+        }
+      }
+
+      &:hover .dot {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  :host {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .toggle {
+    padding: 0;
+    margin: 30px 10vw 30px 14px;
+  }
+}
+
+@media (min-width: 600px) {
+  .toggle {
+    height: 28px;
+  }
+
+  .overlay {
+    height: calc(100vh - 80px);
+  }
+}
+
+@media (min-width: 900px) {
+  .toggle {
+    height: 32px;
+  }
+
+  .overlay {
+    height: calc(100vh - 100px);
+  }
+}
+
+@keyframes slide {
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}

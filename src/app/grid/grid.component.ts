@@ -106,6 +106,10 @@ export class GridComponent {
     return array;
   }
 
+  public getItem(row: number, col: number): any {
+    return this.currentPage.name === 'Landing' ? this.getAnimatedItem(row, col) : this.getPortfolioItem(row, col)
+  }
+
   getAnimatedItem(row: number, col: number) {
     return this.gridItems.find((item) => item.row === row && item.col === col);
   }

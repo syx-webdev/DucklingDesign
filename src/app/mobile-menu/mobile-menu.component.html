@@ -1,0 +1,26 @@
+<div class="page-title" *ngIf="page.parent !== 'landing'">
+  <span class="parent">{{ page.parent }}</span>
+  <ng-container [ngSwitch]="page.parent">
+    <span class="sub" *ngSwitchCase="'portfolio'">{{ page.name }}</span>
+    <span class="sub" *ngSwitchCase="'about'">Hi!</span>
+    <span class="sub" *ngSwitchCase="'references'">Yey!</span>
+  </ng-container>
+</div>
+
+<div class="toggle" (click)="toggle()" [class.collapsed]="isOpen">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div class="overlay" *ngIf="isOpen">
+  <div class="menu">
+    <ng-container *ngFor="let route of routes; let i = index">
+      <div class="menu-item" [class.main]="isMainRoute(route)" (click)="selectPage(route)">
+        <span class="title" [ngClass]="'delay-' + i" [style]="getDelay(i)" [class.with-dot]="selectedPage(route)">
+          {{ route.name === "Landing" ? "Portfolio" : route.name }} <span class="dot"></span>
+        </span>
+      </div>
+    </ng-container>
+  </div>
+</div>

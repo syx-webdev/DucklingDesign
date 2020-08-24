@@ -8,9 +8,10 @@ import { LandingComponent } from './landing/landing.component';
 import { LogoContainerComponent } from './logo-container/logo-container.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { OverlayComponent } from './overlay/overlay.component';
+import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, GridComponent, LandingComponent, LogoContainerComponent, SideMenuComponent, OverlayComponent],
+  declarations: [AppComponent, GridComponent, LandingComponent, LogoContainerComponent, SideMenuComponent, OverlayComponent, MobileMenuComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,6 +17,11 @@
     }
   }
 
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
   app-side-menu {
     top: 50%;
     right: 0;
