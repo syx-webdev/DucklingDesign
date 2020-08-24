@@ -4,7 +4,7 @@ import { PortfolioItem } from "../models/portfolio";
 import { StateService } from "../services/state.service";
 
 @Component({
-  selector: "app-grid",
+  selector: "dd-grid",
   templateUrl: "./grid.component.html",
   styleUrls: ["./grid.component.scss"],
 })

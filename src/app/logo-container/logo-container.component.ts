@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { StateService } from '../services/state.service';
 
 @Component({
-  selector: 'app-logo-container',
+  selector: 'dd-logo-container',
   templateUrl: './logo-container.component.html',
   styleUrls: ['./logo-container.component.scss'],
 })

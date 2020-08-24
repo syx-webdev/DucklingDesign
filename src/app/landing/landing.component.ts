@@ -3,7 +3,7 @@ import { Page } from "../models/page";
 import { StateService } from "../services/state.service";
 
 @Component({
-  selector: "app-landing",
+  selector: "dd-landing",
   templateUrl: "./landing.component.html",
   styleUrls: ["./landing.component.scss"],
 })

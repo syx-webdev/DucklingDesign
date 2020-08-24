@@ -3,7 +3,7 @@ import { StateService } from "../services/state.service";
 import { routes } from "../models/routes";
 
 @Component({
-  selector: "app-side-menu",
+  selector: "dd-side-menu",
   templateUrl: "./side-menu.component.html",
   styleUrls: ["./side-menu.component.scss"],
 })
