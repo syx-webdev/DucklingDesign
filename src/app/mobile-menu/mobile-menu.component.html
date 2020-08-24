@@ -1,3 +1,12 @@
+<div class="page-title" *ngIf="page.parent !== 'landing'">
+  <span class="parent">{{ page.parent }}</span>
+  <ng-container [ngSwitch]="page.parent">
+    <span class="sub" *ngSwitchCase="'portfolio'">{{ page.name }}</span>
+    <span class="sub" *ngSwitchCase="'about'">Hi!</span>
+    <span class="sub" *ngSwitchCase="'references'">Yey!</span>
+  </ng-container>
+</div>
+
 <div class="toggle" (click)="toggle()" [class.collapsed]="isOpen">
   <span></span>
   <span></span>

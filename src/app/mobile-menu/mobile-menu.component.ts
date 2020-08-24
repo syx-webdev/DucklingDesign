@@ -11,11 +11,14 @@ import { StateService } from "../services/state.service";
 })
 export class MobileMenuComponent {
   public isOpen: boolean = false;
+  public page: Page = undefined;
 
   public constructor(
     private state: StateService,
     private sanitizer: DomSanitizer
-  ) {}
+  ) {
+    this.state.currentPage.subscribe((page: Page) => this.page = page);
+  }
 
   public get routes(): any {
     return routes;

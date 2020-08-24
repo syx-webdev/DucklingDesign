@@ -1,11 +1,28 @@
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.page-title {
+  display: flex;
+  font-size: 15px;
+  text-align: end;
+  flex-direction: column;
+
+  .parent {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+}
+
 .toggle {
   width: 46px;
   height: 24px;
   padding: 10px;
   display: flex;
   cursor: pointer;
-  margin: 30px 50px;
   flex-direction: column;
+  margin: 30px 50px 30px 14px;
   justify-content: space-between;
   transition: all 0.2s ease-in-out;
 
@@ -86,7 +103,7 @@
 @media (max-width: 1000px) {
   .toggle {
     padding: 0;
-    margin: 30px 10vw;
+    margin: 30px 10vw 30px 14px;
   }
 }
 
