@@ -5,7 +5,7 @@ import { routes } from "../models/routes";
 import { StateService } from "../services/state.service";
 
 @Component({
-  selector: "app-mobile-menu",
+  selector: "dd-mobile-menu",
   templateUrl: "./mobile-menu.component.html",
   styleUrls: ["./mobile-menu.component.scss"],
 })
