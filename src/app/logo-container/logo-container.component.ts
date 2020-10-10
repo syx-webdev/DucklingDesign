@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { StateService } from '../services/state.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { StateService } from '../services/state.service';
 })
 export class LogoContainerComponent {
   bw = false;
+  @ViewChild('quack') audioPlayerRef: ElementRef;
 
   constructor(private state: StateService) {
     this.state.currentPage.subscribe((page) => (this.bw = !this.isPortfolio(page.name)));
@@ -19,5 +20,11 @@ export class LogoContainerComponent {
 
   toLanding() {
     this.state.toLanding();
+    this.playSound();
+  }
+
+  public playSound(): void {
+    this.audioPlayerRef.nativeElement.load();
+    this.audioPlayerRef.nativeElement.play();
   }
 }
