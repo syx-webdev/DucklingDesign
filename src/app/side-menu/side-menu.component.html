@@ -9,7 +9,7 @@
     <div class="menu-item">
       <div class="dropdown">
         <span class="title" (click)="selectPage('about')">About</span>
-        <span *ngIf="selectedPage === 'about'" class="list-item">Hi!</span>
+        <span *ngIf="selectedPage.name === 'About'" class="list-item">Hi!</span>
       </div>
     </div>
     <div class="menu-item">
@@ -20,9 +20,9 @@
         <span *ngIf="isPortfolio()" class="list-item selected"><span class="dot"></span>{{ selectedPage.name }}</span>
         <div class="list" [class.selection]="isPortfolio()">
           <ng-container *ngFor="let route of portfolioRoutes">
-            <span *ngIf="selectedPage !== route" (click)="selectPage(route)" class="list-item"
-              ><span class="dot"></span>{{ route.name }}</span
-            >
+            <span *ngIf="selectedPage !== route" (click)="selectPage(route)" class="list-item">
+              <span class="dot"></span>{{ route.name }}
+            </span>
           </ng-container>
         </div>
       </span>

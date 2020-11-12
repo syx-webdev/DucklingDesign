@@ -38,6 +38,49 @@ $grid-max-height: 80vw;
       animation-timing-function: ease;
     }
 
+    .about-item {
+
+      &.image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &.text {
+        display: flex;
+        white-space: pre;
+        align-items: center;
+        box-sizing: border-box;
+
+        .icon {
+          display: flex;
+          align-items: center;
+
+          .image {
+            width: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+
+      @for $w from 1 through 4 {
+        @for $h from 1 through 2 {
+          &.w#{$w}-h#{$h} {
+            top: 1px;
+            left: 1px;
+            z-index: 10;
+            overflow: hidden;
+            position: absolute;
+            background-color: white;
+            width: calc(100% * #{$w} - 2px);
+            height: calc(100% * #{$h} - 2px);
+          }
+        }
+      }
+    }
+
     .portfolio-item {
       width: 100%;
       height: 100%;
