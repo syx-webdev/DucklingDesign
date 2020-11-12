@@ -19,6 +19,8 @@ export class SideMenuComponent {
   }
 
   selectPage(page) {
+    if (page === 'about')
+      page = routes.find((route) => route.parent === "about")
     this.state.navigate(page);
   }
 
