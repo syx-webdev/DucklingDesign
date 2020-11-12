@@ -39,7 +39,7 @@ export class GridComponent {
       width: 1,
       height: 1,
       type: "image",
-      imageUrl: "/assets/img/duck.png",
+      imageUrl: "assets/img/duck.png",
       imageSize: "50"
     },
     {
@@ -60,7 +60,7 @@ export class GridComponent {
       width: 2,
       height: 2,
       type: "image",
-      imageUrl: "/assets/img/Kinga.png",
+      imageUrl: "assets/img/Kinga.png",
       imageSize: "100"
     },
     {
@@ -70,7 +70,7 @@ export class GridComponent {
       height: 1,
       type: "text",
       text: "czuczor.kinga96@gmail.com",
-      iconUrl: "/assets/img/email.svg",
+      iconUrl: "assets/img/email.svg",
       style: {
         fontWeight: 700,
         fontSize: '20px',
@@ -83,7 +83,7 @@ export class GridComponent {
       height: 1,
       type: "text",
       text: "+3630/6958584",
-      iconUrl: "/assets/img/phone.svg",
+      iconUrl: "assets/img/phone.svg",
       style: {
         fontWeight: 700,
         fontSize: '20px',
