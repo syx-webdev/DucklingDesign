@@ -18,6 +18,7 @@ export class GridComponent {
   types = ['slide', 'circle'];
   directions = ['top', 'right', 'bottom', 'left'];
   gridSize = {rows: 8, columns: 8};
+  selectedItem: PortfolioItem = null;
 
   aboutItems: any[] = [
     {
@@ -214,7 +215,15 @@ export class GridComponent {
     return this.aboutItems.find(item => item.row === row && item.col === col);
   }
 
-  isVisiblePortfolioItem(item: PortfolioItem) {
+  public openDetails(item: PortfolioItem): void {
+    this.selectedItem = item;
+  }
+
+  public closeDetails(): void {
+    this.selectedItem = null;
+  }
+
+  public isVisiblePortfolioItem(item: PortfolioItem) {
     return this.currentPage
       ? this.currentPage.name === 'All' ||
       this.currentPage.name === item.category

@@ -8,6 +8,8 @@
   </ng-container>
 </div>
 
+<dd-details-modal *ngIf="selectedItem" [item]="selectedItem" (onClose)="closeDetails()"></dd-details-modal>
+
 <ng-template #animation let-item="item">
   <div class="wrapper" [ngClass]="[getAnimationClasses(item), item ? (isReversed ? 'backward' : 'forward') : '']">
     <div *ngIf="item?.type === 'circle'" [ngClass]="['animated-item', item?.direction ? item?.direction : '']"></div>
@@ -19,8 +21,8 @@
 
 <ng-template #portfolio let-item="item">
   <div class="wrapper" [ngClass]="[item ? item.delay : '', isReversed ? 'backward' : 'forward']">
-    <ng-container *ngIf="item && currentPage.name === 'All' || item?.category === currentPage?.name">
-      <div class="portfolio-item">
+    <ng-container *ngIf="item && isVisiblePortfolioItem(item)">
+      <div class="portfolio-item" (click)="openDetails(item)">
         <img [src]="item.thumbnail" [alt]="item.name" loading="lazy" />
         <span class="name">{{ item.name }}</span>
       </div>

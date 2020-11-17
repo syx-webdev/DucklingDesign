@@ -1,0 +1,42 @@
+:host {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  overflow: hidden;
+  min-height: 100%;
+  background-color: white;
+}
+
+.close {
+  right: 58px;
+  cursor: pointer;
+  position: absolute;
+}
+
+@media (max-width: 600px) {
+  .close {
+    top: 30px;
+    right: 10vw;
+  }
+}
+
+@media (min-width: 600px) {
+  .close {
+    top: 32px;
+  }
+}
+
+@media (min-width: 900px) {
+  .close {
+    top: 36px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .close {
+    top: 46px;
+  }
+}
