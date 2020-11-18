@@ -22,7 +22,7 @@ export interface PortfolioItem {
     row: number;
     col: number;
   };
-  details: PortfolioItemDetail[];
+  details: PortfolioItemDetail;
 }
 
 export interface PortfolioItemDetail {
