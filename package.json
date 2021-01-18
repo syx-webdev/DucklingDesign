@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href https://syx-webdev.github.io/DucklingDesign/ && ngh --dir=dist/DucklingDesign"
+    "deploy": "ng build --prod --base-href https://syx-webdev.github.io/DucklingDesign/ && ngh --dir=docs/DucklingDesign",
+    "apex-build": "ng build --prod"
   },
   "private": true,
   "dependencies": {
