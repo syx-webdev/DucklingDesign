@@ -6,7 +6,7 @@ import { StateService } from '../services/state.service';
 @Component({
   selector: 'dd-grid',
   templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss'],
+  styleUrls: ['./grid.component.scss']
 })
 export class GridComponent {
   currentPage: Page;
@@ -26,8 +26,8 @@ export class GridComponent {
       row: 0,
       width: 4,
       height: 1,
-      type: "text",
-      text: "Hi! My name is Kinga Czuczor.\nI'm a graphic designer.",
+      type: 'text',
+      text: 'Hi! My name is Kinga Czuczor.\nI\'m a graphic designer.',
       style: {
         fontWeight: 700,
         fontSize: '20px',
@@ -39,17 +39,17 @@ export class GridComponent {
       row: 0,
       width: 1,
       height: 1,
-      type: "image",
-      imageUrl: "assets/img/duck.png",
-      imageSize: "50"
+      type: 'image',
+      imageUrl: 'assets/img/duck.png',
+      imageSize: '50'
     },
     {
       col: 0,
       row: 1,
       width: 2,
       height: 2,
-      type: "text",
-      text: "I create\nanimations,\nbrandings,\nUX/UI designs,\nartbooks,\nposters",
+      type: 'text',
+      text: 'I create\nanimations,\nbrandings,\nUX/UI designs,\nartbooks,\nposters',
       style: {
         fontSize: '17px',
         paddingLeft: '24px'
@@ -60,21 +60,21 @@ export class GridComponent {
       row: 6,
       width: 2,
       height: 2,
-      type: "image",
-      imageUrl: "assets/img/Kinga.png",
-      imageSize: "100"
+      type: 'image',
+      imageUrl: 'assets/img/Kinga.png',
+      imageSize: '100'
     },
     {
       col: 4,
       row: 6,
       width: 4,
       height: 1,
-      type: "text",
-      text: "czuczor.kinga96@gmail.com",
-      iconUrl: "assets/img/email.svg",
+      type: 'text',
+      text: 'czuczor.kinga96@gmail.com',
+      iconUrl: 'assets/img/email.svg',
       style: {
         fontWeight: 700,
-        fontSize: '20px',
+        fontSize: '20px'
       }
     },
     {
@@ -82,12 +82,12 @@ export class GridComponent {
       row: 7,
       width: 3,
       height: 1,
-      type: "text",
-      text: "+3630/6958584",
-      iconUrl: "assets/img/phone.svg",
+      type: 'text',
+      text: '+3630/6958584',
+      iconUrl: 'assets/img/phone.svg',
       style: {
         fontWeight: 700,
-        fontSize: '20px',
+        fontSize: '20px'
       }
     },
     {
@@ -95,15 +95,15 @@ export class GridComponent {
       row: 7,
       width: 1,
       height: 1,
-      type: "image",
+      type: 'image',
       style: {
-        backgroundColor: "#E51A22"
+        backgroundColor: '#E51A22'
       }
     }
   ];
 
 
-  constructor(private state: StateService) {
+  public constructor(private state: StateService) {
     this.state.pageData.subscribe((data: any) => {
       if (!!data) {
         this.portfolioItems = data['works'];
@@ -228,13 +228,5 @@ export class GridComponent {
       ? this.currentPage.name === 'All' ||
       this.currentPage.name === item.category
       : false;
-  }
-
-  openPortfolioItem(event, item: any) {
-    console.log(event);
-  }
-
-  getThumbnail(name: string) {
-    return `assets/img/project-thumbnails/${name}`;
   }
 }

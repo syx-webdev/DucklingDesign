@@ -29,5 +29,6 @@ export interface PortfolioItemDetail {
   title: string;
   description: string;
   headerImage: string;
+  videos: string[];
   images: string[];
 }
