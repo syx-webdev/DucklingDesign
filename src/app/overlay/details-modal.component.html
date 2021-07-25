@@ -1,0 +1,22 @@
+<div class="header">
+  <dd-logo-container (click)="close()"></dd-logo-container>
+  <img src="assets/img/close.svg" alt="close" class="close" (click)="close()">
+</div>
+
+<div class="content">
+  <img [src]="item.details?.headerImage" class="header-image" alt="header image">
+  <div class="details">
+    <span class="title">{{ item.details?.title }}</span>
+    <span class="description">{{ item.details?.description }}</span>
+  </div>
+
+<!--  <div class="videos">-->
+<!--    <div class="container" *ngFor="let video of item.details?.videos">-->
+<!--      <iframe [src]='getVideoUrl(video)' allowfullscreen allow="autoplay"></iframe>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <div class="images">
+    <img *ngFor="let image of item.details?.images" [src]="image" alt="more image">
+  </div>
+</div>

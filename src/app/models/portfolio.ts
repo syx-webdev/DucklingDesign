@@ -22,12 +22,13 @@ export interface PortfolioItem {
     row: number;
     col: number;
   };
-  details: PortfolioItemDetail[];
+  details: PortfolioItemDetail;
 }
 
 export interface PortfolioItemDetail {
   title: string;
   description: string;
   headerImage: string;
+  videos: string[];
   images: string[];
 }
